@@ -37,11 +37,11 @@ export class OverfastApiCdkStack extends cdk.Stack {
     const plan = api.addUsagePlan('OverfastApiUsagePlan', {
       name: 'OverfastUsagePlan',
       throttle: {
-        rateLimit: 10,       // max 10 requests per second
-        burstLimit: 20,      // max burst of 20 requests
+        rateLimit: 40,       // max 40/sec sustained
+        burstLimit: 100,      // up to 100 instantly
       },
       quota: {
-        limit: 10000,        // max 10,000 requests
+        limit: 400000,        // 400k/day
         period: Period.DAY, // per day
       },
     });
